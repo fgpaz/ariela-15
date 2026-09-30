@@ -64,7 +64,7 @@
       background: var(--crema);
       color: var(--tinta);
       padding: .55rem .8rem;
-      z-index: 6;
+      z-index: 40;
     }
     .saltar:focus { transform: none; }
 
@@ -222,6 +222,113 @@
       color: transparent;
       -webkit-text-fill-color: transparent;
       padding: .2em .45em .08em;
+    }
+    .oro {
+      background-image: linear-gradient(180deg, #e4c56a 0%, #b68b3c 48%, #7c5c28 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .mis {
+      margin: 0;
+      font-family: var(--script);
+      font-size: clamp(2rem, 7vw, 2.65rem);
+      line-height: .7;
+      color: #b68b3c;
+    }
+    .xv {
+      margin: .15rem 0 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(4rem, 16vw, 6.4rem);
+      line-height: .8;
+      letter-spacing: .08em;
+    }
+    .portada.sin-fotos h1 {
+      font-size: clamp(4.15rem, 16vw, 6.5rem);
+      line-height: .78;
+      margin: 0;
+      padding: .16em .5em .02em;
+    }
+    .portada .frase { margin-top: .15rem; }
+    .portada.sin-fotos .frase p {
+      max-width: 22rem;
+      color: #8a6830;
+      font-size: clamp(.9rem, 2.7vw, 1.12rem);
+      line-height: 1.32;
+    }
+    .portada.sin-fotos .frase p + p { margin-top: .28rem; }
+    .portada.con-fotos .mis,
+    .portada.con-fotos .xv,
+    .portada.con-fotos .filete,
+    .portada.con-fotos .fecha-lockup,
+    .portada.con-fotos .salon,
+    .portada.con-fotos .salon-dir { display: none; }
+    .portada.sin-fotos .cuando-corto { display: none; }
+    .portada.con-fotos .frase p { color: #f6f1e6; }
+    .filete {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      width: min(12rem, 64%);
+      margin: .45rem auto .1rem;
+    }
+    .filete::before, .filete::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #c6a25a;
+    }
+    .filete i {
+      width: .4rem;
+      height: .4rem;
+      background: #c6a25a;
+      rotate: 45deg;
+    }
+    .fecha-lockup {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      column-gap: .65rem;
+      width: min(18.5rem, 100%);
+      margin: .2rem auto 0;
+      color: #8a6830;
+    }
+    .fecha-lado {
+      margin: 0;
+      display: grid;
+      gap: .1rem;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .13em;
+      font-size: .72rem;
+      line-height: 1.15;
+    }
+    .fecha-izq { justify-items: end; text-align: right; }
+    .fecha-der { justify-items: start; text-align: left; }
+    .fecha-dia {
+      margin: 0;
+      padding: 0 .55rem;
+      border-left: 1px solid #c6a25a;
+      border-right: 1px solid #c6a25a;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 8vw, 3.2rem);
+      line-height: .85;
+    }
+    .salon, .salon-dir { margin: 0; color: #8a6830; }
+    .salon {
+      margin-top: .65rem;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .15em;
+      font-size: .82rem;
+    }
+    .salon-dir {
+      margin-top: .15rem;
+      font-style: italic;
+      font-size: 1.02rem;
     }
     .portada.con-fotos h1 {
       background: none;
@@ -691,16 +798,10 @@
     @media (max-width: 380px) { .opciones { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: no-preference) {
       .slide.activa img { animation: ken 7.2s var(--ease) forwards; }
-      .portada.sin-fotos .kicker,
-      .portada.sin-fotos h1,
-      .portada.sin-fotos .cuando-corto {
-        animation: entrar .8s var(--ease) both;
-      }
-      .portada.sin-fotos h1 { animation-delay: .06s; }
-      .portada.sin-fotos .cuando-corto { animation-delay: .12s; }
     }
     @media (prefers-reduced-motion: reduce) {
       .slide { transition: none; }
+      .apertura { display: none !important; }
       .flecha:active, .pausa:active, .enviar:active, .opciones label:active, .paso button:active,
       .acciones-lugar a:active, .acciones-lugar button:active, .abrir-maps:active { transform: none; }
     }
@@ -716,8 +817,8 @@
         grid-template-rows: 1fr auto auto;
         align-items: center;
         justify-items: center;
-        padding-top: calc(max(.85rem, env(safe-area-inset-top)) + 8.4rem);
-        padding-bottom: calc(max(.85rem, env(safe-area-inset-bottom)) + .45rem);
+        padding-top: calc(max(.85rem, env(safe-area-inset-top)) + 6.6rem);
+        padding-bottom: calc(max(.85rem, env(safe-area-inset-bottom)) + .35rem);
       }
       .portada.sin-fotos .portada-copy,
       .portada.sin-fotos .indice,
@@ -734,14 +835,7 @@
         width: min(30rem, calc(100% - 3.4rem));
         padding: 0;
       }
-      .portada.sin-fotos .bajar {
-        grid-row: 2;
-        margin: 0;
-        font-size: 0;
-        gap: 0;
-        min-height: 0;
-      }
-      .portada.sin-fotos .bajar::before { height: 2.1rem; }
+      .portada.sin-fotos .bajar { display: none; }
       .portada.sin-fotos .indice {
         grid-row: 3;
         width: min(34rem, calc(100% - 2.6rem));
@@ -749,15 +843,246 @@
       }
       .portada.sin-fotos .indice-links { gap: .05rem .9rem; }
       .portada.sin-fotos .indice a {
-        font-size: .88rem;
-        letter-spacing: .09em;
-        min-height: 40px;
+        font-size: .82rem;
+        letter-spacing: .08em;
+        min-height: 36px;
       }
     }
+    @media (min-width: 900px) {
+      .portada.sin-fotos {
+        align-items: center;
+        padding-top: 12.4rem;
+        padding-bottom: 2.6rem;
+      }
+      .portada.sin-fotos .portada-copy { margin-top: 0; }
+      .portada.sin-fotos .bajar { display: none; }
+      .portada.sin-fotos h1 { font-size: 6.5rem; }
+      .portada.sin-fotos .xv { font-size: 6.1rem; }
+      .portada.sin-fotos .frase { margin-top: .85rem; }
+      .portada.sin-fotos .frase p { font-size: 1.22rem; max-width: 26rem; }
+      .portada.sin-fotos .filete { margin-top: 1rem; }
+      .portada.sin-fotos .fecha-lockup { margin-top: .45rem; }
+      .portada.sin-fotos .salon { margin-top: 1.15rem; }
+    }
+
+    html.con-apertura, html.con-apertura body { overflow: hidden; }
+    .apertura {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      background:
+        radial-gradient(68% 42% at 50% 46%, rgba(196, 163, 106, .16), transparent 64%),
+        #f7f1e3;
+      opacity: 1;
+      visibility: visible;
+    }
+    .apertura-boton {
+      appearance: none;
+      border: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 1.15rem;
+      padding: max(1rem, env(safe-area-inset-top)) 1rem max(1.2rem, env(safe-area-inset-bottom));
+      background: transparent;
+      cursor: pointer;
+    }
+    .suite {
+      position: relative;
+      width: min(24rem, 92vw);
+      height: min(38rem, 80dvh);
+      perspective: 1600px;
+      transform: scale(1);
+    }
+    @media (min-width: 900px) {
+      .suite {
+        width: min(28rem, 46vw);
+        height: min(40rem, 78dvh);
+      }
+    }
+    .interior {
+      position: absolute;
+      inset: 2% 0 0 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10% 6% 0;
+      overflow: hidden;
+      border-radius: 999px 999px 12px 12px;
+      background: #f7f1e3;
+      box-shadow:
+        0 0 0 1.5px #c6a25a,
+        inset 0 0 0 6px #f7f1e3,
+        inset 0 0 0 7.5px #c6a25a,
+        0 18px 36px rgba(70, 48, 20, .16);
+    }
+    .interior-corona { width: 62%; height: auto; }
+    .interior-mis {
+      margin: -.15rem 0 0;
+      font-family: var(--script);
+      font-size: 2.1rem;
+      line-height: .7;
+      color: #b68b3c;
+    }
+    .interior-xv {
+      margin: .2rem 0 0;
+      font-family: var(--serif);
+      font-size: 4.4rem;
+      line-height: .8;
+      letter-spacing: .08em;
+    }
+    .interior-nombre {
+      margin: 0;
+      font-family: var(--script);
+      font-size: 3.6rem;
+      line-height: .8;
+      padding: .16em .35em 0;
+    }
+    .tapa {
+      position: absolute;
+      inset: 0 50% 1% 0;
+      transform-origin: 50% 0;
+      transform: rotateX(0deg);
+      transform-style: preserve-3d;
+    }
+    .tapa-cara {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px 999px 12px 12px;
+      backface-visibility: hidden;
+    }
+    .tapa-frente {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 7% 8% 8%;
+      background:
+        radial-gradient(80% 46% at 50% 0%, rgba(255, 252, 245, .85), transparent 62%),
+        #f7f1e3;
+      border: 1.5px solid #c6a25a;
+      box-shadow:
+        inset 0 0 0 6px #f7f1e3,
+        inset 0 0 0 7.5px #c6a25a,
+        0 16px 32px rgba(70, 48, 20, .18);
+    }
+    .tapa-dorso {
+      background: linear-gradient(180deg, #f3ead9, #e4d5bc);
+      transform: rotateX(180deg);
+    }
+    .tapa-corona { width: 78%; height: auto; }
+    .tapa-nombre {
+      margin: .35rem 0 0;
+      font-family: var(--script);
+      font-size: clamp(2.8rem, 11vw, 4rem);
+      line-height: .8;
+      padding: .18em .2em .04em;
+    }
+    .tapa-fecha {
+      margin-top: auto;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .16em;
+      font-size: .74rem;
+      color: #8a6830;
+    }
+    .cordon {
+      position: absolute;
+      z-index: 4;
+      left: -2%;
+      right: 8%;
+      top: 64%;
+      height: 16px;
+      scale: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(#a8843e, #a8843e) center 2px / 100% 1.5px no-repeat,
+        linear-gradient(#e4c56a, #e4c56a) center 8px / 100% 1.5px no-repeat;
+    }
+    .sello {
+      position: absolute;
+      z-index: 5;
+      top: 64%;
+      left: 34%;
+      width: 4.35rem;
+      height: 4.35rem;
+      display: grid;
+      place-items: center;
+      translate: -50% -50%;
+      scale: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 28%, #f8e7b0 0%, #e0c078 30%, #b68b3c 62%, #7c5c28 100%);
+      box-shadow:
+        0 10px 18px rgba(70, 46, 16, .28),
+        inset 0 0 0 2px rgba(255, 246, 220, .8),
+        inset 0 0 0 6px rgba(110, 74, 28, .38);
+      color: #fbf6ec;
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      line-height: 1;
+    }
+    .apertura-pista {
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .18em;
+      font-size: .92rem;
+      color: #8a6830;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .apertura-pista { animation: latido 1.8s ease-in-out infinite; }
+    }
+    .apertura.abriendo .sello { animation: selloSale .48s ease forwards; }
+    .apertura.abriendo .cordon { animation: cordonSale .4s ease .08s forwards; }
+    .apertura.abriendo .tapa { animation: solapa 1.12s cubic-bezier(.65, .02, .15, 1) .16s forwards; }
+    .apertura.abriendo .apertura-pista { animation: pistaSale .25s ease forwards; }
+    .apertura.abriendo { animation: telon .55s ease 1.05s forwards; }
+    @keyframes latido { 50% { opacity: .4; } }
+    @keyframes selloSale {
+      0% { scale: 1; opacity: 1; }
+      42% { scale: 1.12; opacity: 1; }
+      100% { scale: .4; opacity: 0; }
+    }
+    @keyframes cordonSale { to { opacity: 0; scale: 1.05 .15; } }
+    @keyframes solapa {
+      0% { transform: rotateX(0deg); opacity: 1; }
+      70% { transform: rotateX(-86deg); opacity: 1; }
+      100% { transform: rotateX(-108deg); opacity: 0; }
+    }
+    @keyframes pistaSale { to { opacity: 0; } }
+    @keyframes telon { to { opacity: 0; visibility: hidden; } }
   </style>
 </head>
 <body>
   <a class="saltar" href="#datos">Saltar a los datos</a>
+
+  <div class="apertura" id="apertura">
+    <button class="apertura-boton" type="button">
+      <span class="suite" aria-hidden="true">
+        <span class="interior">
+          <img class="interior-corona" src="corona.png" alt="">
+          <span class="interior-mis">mis</span>
+          <span class="interior-xv oro">XV</span>
+          <span class="interior-nombre oro">Ariela</span>
+        </span>
+        <span class="tapa">
+          <span class="tapa-cara tapa-frente">
+            <img class="tapa-corona" src="corona.png" alt="">
+            <span class="tapa-nombre oro">Ariela</span>
+            <span class="tapa-fecha">5 · 12 · 2026</span>
+          </span>
+          <span class="tapa-cara tapa-dorso"></span>
+        </span>
+        <span class="cordon"></span>
+        <span class="sello"><span>A</span></span>
+      </span>
+      <span class="apertura-pista">Tocá para abrir</span>
+    </button>
+  </div>
 
   <header class="portada sin-fotos" id="portada" aria-roledescription="carrusel" aria-label="Portada de Ariela">
     <div class="slides" id="slides"></div>
@@ -775,7 +1100,21 @@
       </div>
     </nav>
     <div class="portada-copy">
+      <p class="mis">mis</p>
+      <p class="xv oro">XV</p>
       <h1>Ariela</h1>
+      <blockquote class="frase" id="frase">
+        <p>Hay historias y personas que no voy a olvidar<br>y recuerdos como este que siempre voy a guardar.</p>
+        <p>Son parte de mi vida y es mi deseo<br>que compartan este día tan especial conmigo.</p>
+      </blockquote>
+      <p class="filete" aria-hidden="true"><i></i></p>
+      <div class="fecha-lockup">
+        <p class="fecha-lado fecha-izq"><b>Sábado</b><span>21:00 hs</span></p>
+        <p class="fecha-dia oro">5</p>
+        <p class="fecha-lado fecha-der"><b>Diciembre</b><span>2026</span></p>
+      </div>
+      <p class="salon">Salón “El Hornero”</p>
+      <p class="salon-dir">Araoz 1949 · Luján de Cuyo</p>
       <p class="cuando-corto">5 de diciembre · 21:00</p>
     </div>
     <a class="bajar" href="#frase">La invitación</a>
@@ -788,15 +1127,6 @@
   </header>
 
   <main>
-    <section class="banda banda-frase">
-      <div class="col">
-        <blockquote class="frase" id="frase">
-          <p>Hay historias y personas que no voy a olvidar y recuerdos como este que siempre voy a guardar.</p>
-          <p>Son parte de mi vida y es mi deseo que compartan este día tan especial conmigo.</p>
-        </blockquote>
-      </div>
-    </section>
-
     <section class="banda banda-lugar" id="datos" aria-labelledby="t-datos">
       <div class="col">
         <p class="placa">
@@ -940,7 +1270,7 @@
       <h2>Mientras la terminamos</h2>
       <p id="faltan"></p>
       <ul>
-        <li>Las fotos entran después de la sesión. Hasta entonces la portada queda con el nombre.</li>
+        <li>Las fotos entran después de la sesión. Hasta entonces la portada abre la tarjeta.</li>
         <li>Dress code: blanco y negro, elegante formal.</li>
         <li>Las confirmaciones llegan al 261 466-4183.</li>
       </ul>
@@ -952,6 +1282,46 @@
   </details>
 
   <script>
+    (function prepararApertura() {
+      const capa = document.querySelector("#apertura");
+      if (!capa) return;
+      const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const piezas = ["#portada", "main", ".cierre", "#taller"].map((sel) => document.querySelector(sel)).filter(Boolean);
+      if (quieto) {
+        capa.hidden = true;
+        return;
+      }
+      document.documentElement.classList.add("con-apertura");
+      piezas.forEach((nodo) => nodo.setAttribute("inert", ""));
+      let lista = false;
+      const soltar = () => {
+        if (lista) return;
+        lista = true;
+        capa.hidden = true;
+        document.documentElement.classList.remove("con-apertura");
+        piezas.forEach((nodo) => nodo.removeAttribute("inert"));
+      };
+      const abrir = () => {
+        if (capa.classList.contains("abriendo") || lista) return;
+        capa.classList.add("abriendo");
+        const boton = capa.querySelector("button");
+        if (boton) boton.disabled = true;
+        capa.addEventListener("animationend", (evento) => {
+          if (evento.animationName === "telon") soltar();
+        });
+        window.setTimeout(soltar, 2600);
+      };
+      const espera = window.setTimeout(abrir, 1500);
+      capa.querySelector("button").addEventListener("click", () => {
+        window.clearTimeout(espera);
+        abrir();
+      });
+      document.querySelector(".saltar").addEventListener("click", () => {
+        window.clearTimeout(espera);
+        soltar();
+      });
+    })();
+
     const FIESTA = {
       borrador: true,
       fechaISO: "2026-12-05T21:00:00-03:00",
