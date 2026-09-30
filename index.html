@@ -71,7 +71,7 @@
     .indice {
       position: absolute;
       z-index: 4;
-      top: calc(max(1rem, env(safe-area-inset-top)) + .55rem);
+      top: calc(max(.85rem, env(safe-area-inset-top)) + 7.1rem);
       left: calc(max(1rem, env(safe-area-inset-left)) + .7rem);
       right: calc(max(1rem, env(safe-area-inset-right)) + .7rem);
       display: flex;
@@ -113,7 +113,12 @@
     .portada.sin-fotos .indice { color: #5c4e3a; }
     .portada.con-fotos .indice { color: #f6f1e6; text-shadow: 0 1px 12px rgba(0, 0, 0, .45); }
     @media (min-width: 900px) {
-      .indice { flex-wrap: nowrap; justify-content: space-between; text-align: left; }
+      .indice {
+        top: max(.55rem, env(safe-area-inset-top));
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        text-align: left;
+      }
       .indice a.indice-marca { display: inline-flex; }
       .indice-links { flex-wrap: nowrap; justify-content: flex-end; gap: 1.35rem; width: auto; }
       .indice-links a:last-child { flex-basis: auto; }
@@ -132,29 +137,58 @@
       align-items: center;
       padding-bottom: 4.5rem;
       background:
-        radial-gradient(68% 42% at 50% 44%, rgba(196, 163, 106, .2), transparent 64%),
-        radial-gradient(rgba(44, 38, 31, .045) .7px, transparent .7px),
-        var(--crema);
-      background-size: auto, 4px 4px, auto;
+        radial-gradient(68% 42% at 50% 46%, rgba(196, 163, 106, .16), transparent 64%),
+        #f7f1e3;
     }
-    .portada.sin-fotos::before {
-      content: "";
+    .marco {
       position: absolute;
-      inset: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
-      border: 1px solid var(--linea);
+      z-index: 3;
+      pointer-events: none;
+      inset: max(.85rem, env(safe-area-inset-top)) max(.85rem, env(safe-area-inset-right)) max(.85rem, env(safe-area-inset-bottom)) max(.85rem, env(safe-area-inset-left));
+      border: 1.5px solid #c6a25a;
+      border-radius: 999px 999px 0 0;
+      box-shadow: inset 0 0 0 6px #f7f1e3, inset 0 0 0 7.5px #c6a25a;
+    }
+    .corona {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      top: calc(max(.85rem, env(safe-area-inset-top)) + 1.35rem);
+      transform: translateX(-50%);
+      width: min(12.5rem, 52%);
+      height: auto;
       pointer-events: none;
     }
+    .portada.con-fotos .corona { display: none; }
     .portada.con-fotos { color: #f6f1e6; background: var(--noche); }
-    .slides { position: absolute; inset: 0; }
+    .slides, .velo {
+      inset: max(.85rem, env(safe-area-inset-top)) max(.85rem, env(safe-area-inset-right)) max(.85rem, env(safe-area-inset-bottom)) max(.85rem, env(safe-area-inset-left));
+      border-radius: 999px 999px 0 0;
+    }
+    .slides { position: absolute; overflow: hidden; }
     .slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.05s var(--ease); }
     .slide.activa { opacity: 1; }
     .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .velo {
       position: absolute;
-      inset: 0;
       pointer-events: none;
       background: linear-gradient(to top, rgba(16, 13, 11, .82) 0%, rgba(16, 13, 11, .08) 46%, rgba(16, 13, 11, .28) 100%);
       opacity: 0;
+    }
+    @media (min-width: 900px) {
+      .marco, .slides, .velo {
+        inset: auto;
+        top: 4.85rem;
+        bottom: max(.85rem, env(safe-area-inset-bottom));
+        left: 50%;
+        right: auto;
+        width: min(42rem, calc(100% - 5rem));
+        transform: translateX(-50%);
+      }
+      .corona {
+        top: calc(4.85rem + 1.2rem);
+        width: 17rem;
+      }
     }
     .portada.con-fotos .velo { opacity: 1; }
     .portada-copy {
@@ -178,14 +212,22 @@
       margin: .1rem 0 .15rem;
       font-family: var(--script);
       font-weight: 400;
-      font-size: clamp(5.4rem, 22vw, 8.4rem);
-      line-height: 1.05;
+      font-size: clamp(5.2rem, 20vw, 8rem);
+      line-height: .95;
       font-optical-sizing: auto;
       text-rendering: optimizeLegibility;
-      color: var(--oro);
-      padding-left: .06em;
+      background-image: linear-gradient(180deg, #f8e7b0 0%, #e4c56a 46%, #b68b3c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      padding: .08em .12em 0;
     }
-    .portada.con-fotos h1,
+    .portada.con-fotos h1 {
+      background: none;
+      color: #f6f1e6;
+      -webkit-text-fill-color: #f6f1e6;
+    }
     .portada.con-fotos .kicker,
     .portada.con-fotos .cuando-corto { color: #f6f1e6; }
     .portada.con-fotos .portada-copy,
@@ -632,9 +674,6 @@
     }
 
     @media (max-width: 380px) { .opciones { grid-template-columns: 1fr; } }
-    @media (min-width: 900px) {
-      .portada.sin-fotos::before { inset: 1.6rem; }
-    }
     @media (prefers-reduced-motion: no-preference) {
       .slide.activa img { animation: ken 7.2s var(--ease) forwards; }
       .portada.sin-fotos .kicker,
@@ -663,6 +702,8 @@
   <header class="portada sin-fotos" id="portada" aria-roledescription="carrusel" aria-label="Portada de Ariela">
     <div class="slides" id="slides"></div>
     <div class="velo" aria-hidden="true"></div>
+    <div class="marco" aria-hidden="true"></div>
+    <img class="corona" src="corona.png" alt="">
     <nav class="indice" aria-label="Índice">
       <a class="indice-marca" href="#portada">Ariela</a>
       <div class="indice-links">
