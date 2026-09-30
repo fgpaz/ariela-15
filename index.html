@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4efe4">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Ariela te invita a sus quince. Sábado 5 de diciembre de 2026, 21:00, en el Salón El Hornero.">
+  <title>Los 15 de Ariela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --crema: #f4efe4;
+      --tinta: #2c261f;
+      --suave: #5c5348;
+      --oro: #8a6830;
+      --linea: rgba(138, 104, 48, .42);
+      --noche: #161310;
+      --error: #8a3b32;
+      --serif: "Bodoni Moda", Palatino, "Palatino Linotype", Georgia, serif;
+      --script: "Great Vibes", cursive;
+      --texto: "Cormorant Garamond", Palatino, Georgia, serif;
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --lado: min(34rem, calc(100% - 3rem));
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; color-scheme: light; }
+    body {
+      margin: 0;
+      background: var(--crema);
+      color: var(--tinta);
+      font-family: var(--texto);
+      font-size: 1.2rem;
+      line-height: 1.45;
+      accent-color: var(--oro);
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    ::selection { background: #ead9b0; color: #2c261f; }
+    button, input, textarea { font: inherit; color: inherit; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--tinta); outline-offset: 3px; }
+    h1, h2, .cuando-fecha { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    .sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .saltar {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      transform: translateY(-150%);
+      background: var(--crema);
+      color: var(--tinta);
+      padding: .55rem .8rem;
+      z-index: 6;
+    }
+    .saltar:focus { transform: none; }
+
+    .indice {
+      position: absolute;
+      z-index: 4;
+      top: calc(max(1rem, env(safe-area-inset-top)) + .55rem);
+      left: calc(max(1rem, env(safe-area-inset-left)) + .7rem);
+      right: calc(max(1rem, env(safe-area-inset-right)) + .7rem);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: .1rem 1.15rem;
+      text-align: center;
+    }
+    .indice a.indice-marca {
+      display: none;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .2em;
+      font-size: 1.05rem;
+      min-height: 44px;
+      align-items: center;
+    }
+    .indice-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .1rem 1.15rem;
+      width: 100%;
+    }
+    .indice-links a:last-child { flex-basis: 100%; justify-content: center; }
+    .indice a {
+      text-decoration: none;
+      color: inherit;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .12em;
+      font-size: .98rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .portada.sin-fotos .indice { color: #5c4e3a; }
+    .portada.con-fotos .indice { color: #f6f1e6; text-shadow: 0 1px 12px rgba(0, 0, 0, .45); }
+    @media (min-width: 900px) {
+      .indice { flex-wrap: nowrap; justify-content: space-between; text-align: left; }
+      .indice a.indice-marca { display: inline-flex; }
+      .indice-links { flex-wrap: nowrap; justify-content: flex-end; gap: 1.35rem; width: auto; }
+      .indice-links a:last-child { flex-basis: auto; }
+    }
+
+    .portada {
+      position: relative;
+      min-height: 100svh;
+      min-height: 100dvh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--tinta);
+    }
+    .portada.sin-fotos {
+      align-items: center;
+      padding-bottom: 4.5rem;
+      background:
+        radial-gradient(68% 42% at 50% 44%, rgba(196, 163, 106, .2), transparent 64%),
+        radial-gradient(rgba(44, 38, 31, .045) .7px, transparent .7px),
+        var(--crema);
+      background-size: auto, 4px 4px, auto;
+    }
+    .portada.sin-fotos::before {
+      content: "";
+      position: absolute;
+      inset: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+      border: 1px solid var(--linea);
+      pointer-events: none;
+    }
+    .portada.con-fotos { color: #f6f1e6; background: var(--noche); }
+    .slides { position: absolute; inset: 0; }
+    .slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.05s var(--ease); }
+    .slide.activa { opacity: 1; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .velo {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(16, 13, 11, .82) 0%, rgba(16, 13, 11, .08) 46%, rgba(16, 13, 11, .28) 100%);
+      opacity: 0;
+    }
+    .portada.con-fotos .velo { opacity: 1; }
+    .portada-copy {
+      position: relative;
+      z-index: 2;
+      width: min(30rem, calc(100% - 3.4rem));
+      margin: 0 auto;
+      text-align: center;
+      padding: 16vh 0 5.5rem;
+    }
+    .portada.sin-fotos .portada-copy { padding: 0; }
+    .kicker, .cuando-corto, .etiqueta {
+      margin: 0;
+      font-family: var(--texto);
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .14em;
+      font-size: .95rem;
+    }
+    h1 {
+      margin: .1rem 0 .15rem;
+      font-family: var(--script);
+      font-weight: 400;
+      font-size: clamp(5.4rem, 22vw, 8.4rem);
+      line-height: 1.05;
+      font-optical-sizing: auto;
+      text-rendering: optimizeLegibility;
+      color: var(--oro);
+      padding-left: .06em;
+    }
+    .portada.con-fotos h1,
+    .portada.con-fotos .kicker,
+    .portada.con-fotos .cuando-corto { color: #f6f1e6; }
+    .portada.con-fotos .portada-copy,
+    .portada.con-fotos .mando { text-shadow: 0 1px 16px rgba(0, 0, 0, .45); }
+    .bajar {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: calc(1.15rem + env(safe-area-inset-bottom));
+      display: grid;
+      justify-items: center;
+      align-content: end;
+      gap: .55rem;
+      min-height: 44px;
+      text-decoration: none;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .16em;
+      font-size: .95rem;
+      color: var(--suave);
+    }
+    .bajar::before {
+      content: "";
+      width: 1px;
+      height: 2.4rem;
+      background: var(--linea);
+    }
+    .portada.con-fotos .bajar { display: none; }
+    .mando {
+      position: absolute;
+      z-index: 3;
+      left: max(1rem, env(safe-area-inset-left));
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: calc(.35rem + env(safe-area-inset-bottom));
+      display: grid;
+      grid-template-columns: 44px 1fr auto 44px;
+      align-items: center;
+    }
+    .flecha, .pausa, .paso button {
+      border: 0;
+      background: transparent;
+      min-width: 44px;
+      min-height: 44px;
+      cursor: pointer;
+      color: inherit;
+    }
+    .portada.con-fotos .flecha,
+    .portada.con-fotos .pausa,
+    .portada.con-fotos #contador { color: #f6f1e6; }
+    .flecha { font-size: 1.6rem; line-height: 1; }
+    .pausa, #contador {
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .12em;
+      font-size: .95rem;
+    }
+    #contador { margin: 0; text-align: center; }
+    @media (hover: hover) and (pointer: fine) {
+      .flecha:hover, .pausa:hover, .bajar:hover, .indice a:hover { color: var(--oro); }
+      .acciones-lugar a:hover, .acciones-lugar button:hover, .abrir-maps:hover { background: #faf6ee; }
+      .portada.con-fotos .flecha:hover,
+      .portada.con-fotos .pausa:hover,
+      .portada.con-fotos .indice a:hover { color: #fff; }
+    }
+    .flecha:active, .pausa:active, .enviar:active, .opciones label:active, .paso button:active,
+    .acciones-lugar a:active, .acciones-lugar button:active, .abrir-maps:active {
+      transform: scale(0.97);
+    }
+
+    main { margin: 0; }
+    .banda { padding: 3.5rem 0; }
+    .banda .col { width: var(--lado); margin: 0 auto; }
+    .banda-frase { background: #faf7f0; text-align: center; }
+    .banda-lugar { background: #e4d5bc; text-align: left; }
+    .banda-cuenta { background: #f3eadb; text-align: center; }
+    .banda-vestir { background: #ddd0b6; text-align: center; }
+    .banda-confirma { background: #f7f2e8; }
+    .banda-confirma h2 { text-align: center; }
+    .frase {
+      margin: 0 auto;
+      max-width: 28rem;
+      border: 0;
+      padding: 0;
+    }
+    .frase p {
+      margin: 0 auto;
+      max-width: 24rem;
+      font-style: italic;
+      font-size: clamp(1.28rem, 3.8vw, 1.6rem);
+      line-height: 1.42;
+      text-wrap: balance;
+      color: var(--tinta);
+    }
+    .frase p + p { margin-top: 1rem; }
+    section { scroll-margin-top: 1.25rem; }
+    h2 {
+      margin: 0 0 1.15rem;
+      font-weight: 600;
+      font-size: .95rem;
+      font-variant: small-caps;
+      letter-spacing: .16em;
+      color: var(--suave);
+    }
+    .placa {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin: 0;
+      padding: .35rem .85rem .35rem .65rem;
+      border-radius: 999px;
+      background: #f7f2e6;
+      color: #5c4e3a;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .12em;
+      font-size: .95rem;
+    }
+    .placa svg { display: block; }
+    .lugar-nombre {
+      margin: .85rem 0 .2rem;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-variant: normal;
+      letter-spacing: 0;
+      text-transform: none;
+      font-size: clamp(2.5rem, 8vw, 3.4rem);
+      line-height: 1.02;
+      color: #3f3426;
+    }
+    .lugar-hora {
+      margin: .35rem 0 0;
+      font-size: 1.7rem;
+      color: #6a5638;
+    }
+    .lugar-cuando, .lugar-dir {
+      margin: .15rem 0 0;
+      font-size: 1.28rem;
+      color: #3f3426;
+    }
+    .lugar-dir { margin-top: .45rem; }
+    .mapa {
+      position: relative;
+      margin-top: 1.25rem;
+      height: 18.5rem;
+      border-radius: 1.15rem;
+      overflow: hidden;
+      background: #efe4d0;
+      border: 1px solid rgba(63, 52, 38, .14);
+    }
+    .mapa iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .abrir-maps {
+      position: absolute;
+      z-index: 2;
+      top: .7rem;
+      left: .7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      min-height: 44px;
+      padding: 0 .8rem;
+      border-radius: .6rem;
+      background: #fffdf8;
+      color: #3f3426;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.02rem;
+      box-shadow: 0 1px 5px rgba(44, 38, 31, .16);
+    }
+    .acciones-lugar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+      margin-top: .85rem;
+    }
+    .acciones-lugar a, .acciones-lugar button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      min-height: 52px;
+      padding: .4rem .6rem;
+      border-radius: .95rem;
+      border: 1px solid rgba(74, 61, 40, .38);
+      background: transparent;
+      color: #4a3d28;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background-color 160ms var(--ease), transform 160ms var(--ease);
+    }
+
+    .cuenta { display: grid; justify-items: center; gap: 1.35rem; margin: 0; }
+    .cuenta p { margin: 0; display: grid; justify-items: center; gap: .15rem; }
+    .cuenta b {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      line-height: .85;
+      color: var(--oro);
+    }
+    .cuenta-dias b { font-size: clamp(4.6rem, 20vw, 6.2rem); letter-spacing: -.03em; }
+    .cuenta span {
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .12em;
+      font-size: .95rem;
+      color: var(--suave);
+    }
+    .cuenta-resto {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: min(20rem, 100%);
+    }
+    .cuenta-resto b { font-size: 1.85rem; }
+    .cuenta-resto p + p { box-shadow: inset 1px 0 0 var(--linea); }
+
+    .vestir-bloque { display: grid; gap: .7rem; text-align: left; }
+    .vestir-tarjeta {
+      background: #f7f2e6;
+      border-radius: 1.15rem;
+      padding: 1.15rem 1.25rem 1.25rem;
+    }
+    .vestir-etiq {
+      margin: 0;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .14em;
+      font-size: .95rem;
+      color: #6a5638;
+    }
+    .vestir-colores { background: #efe2cc; }
+    .vestir-titulo {
+      margin: .3rem 0 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.85rem, 6vw, 2.2rem);
+      line-height: 1.08;
+      color: #3f3426;
+    }
+    .vestir-lead {
+      margin: .4rem 0 0;
+      font-size: 1.22rem;
+      color: var(--tinta);
+    }
+    .vestir-sub { margin-top: 1.05rem; }
+    .vestir-no { margin-top: 1.05rem; color: #7a4638; }
+    .vestir-tarjeta ul {
+      margin: .3rem 0 0;
+      padding: 0 0 0 1.15rem;
+      display: grid;
+      gap: .15rem;
+    }
+    .vestir-tarjeta li::marker { color: #8a6830; }
+
+    form { display: grid; gap: 1.35rem; text-align: left; margin-top: .3rem; }
+    .campo, fieldset { display: grid; gap: .35rem; }
+    fieldset { border: 0; margin: 0; padding: 0; }
+    .campo span, legend {
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .1em;
+      font-size: 1rem;
+      color: var(--suave);
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--linea);
+      border-radius: 0;
+      padding: .75rem 0;
+      min-height: 48px;
+      transition: border-color 160ms var(--ease);
+    }
+    textarea { min-height: 6.5rem; resize: vertical; }
+    input[type="text"]:focus, textarea:focus { outline: none; border-bottom-color: var(--tinta); }
+    .campo:has(:user-invalid) input,
+    .campo:has(:user-invalid) textarea { border-bottom-color: var(--error); }
+    .error {
+      display: none;
+      margin: 0;
+      color: var(--error);
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+    .campo:has(:user-invalid) .error,
+    fieldset:has(:user-invalid) .error { display: block; }
+    .opciones { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+    .opciones label {
+      position: relative;
+      border: 1px solid var(--linea);
+      min-height: 56px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: .8rem .55rem;
+      cursor: pointer;
+      transition: background-color 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease), transform 160ms var(--ease);
+    }
+    .opciones input {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .opciones label:has(input:checked) {
+      background: var(--tinta);
+      color: var(--crema);
+      border-color: var(--tinta);
+    }
+    .opciones label:has(input:focus-visible) { outline: 2px solid var(--tinta); outline-offset: 3px; }
+    .paso {
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      align-items: center;
+      border-bottom: 1px solid var(--linea);
+      max-width: 14rem;
+    }
+    .paso input {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      text-align: center;
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      min-height: 48px;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+    .paso input::-webkit-inner-spin-button,
+    .paso input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+    .paso input:focus { outline: none; }
+    .paso button { font-size: 1.4rem; line-height: 1; }
+    .enviar {
+      background: var(--tinta);
+      color: var(--crema);
+      border: 0;
+      min-height: 54px;
+      cursor: pointer;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .1em;
+      font-size: 1.05rem;
+      transition: transform 160ms var(--ease), background-color 160ms var(--ease);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .enviar:hover { background: #1a1613; }
+    }
+    #rsvp-estado { min-height: 1.4em; margin: 0; text-align: center; font-style: italic; }
+    #respaldo { color: var(--suave); }
+    #respaldo summary { cursor: pointer; min-height: 44px; display: grid; align-items: center; }
+    #mensaje-listo { white-space: pre-wrap; margin: .2rem 0 0; }
+
+    .cierre {
+      margin: 0;
+      padding: 2.6rem 0 calc(2.4rem + env(safe-area-inset-bottom));
+      background: #3a3128;
+      color: #f7f2e6;
+    }
+    .cierre-col {
+      width: min(72rem, calc(100% - 3rem));
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .cierre p { margin: 0; }
+    .cierre .firma {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 2.45rem);
+      line-height: 1.05;
+      color: #f7f2e6;
+    }
+    .cierre .gracias {
+      margin-top: .35rem;
+      font-size: 1.2rem;
+      color: #f3eadb;
+    }
+    .cierre-der { display: grid; gap: .25rem; font-size: 1.08rem; color: #f3eadb; }
+    .cierre-fecha span + span::before { content: " · "; }
+    @media (min-width: 760px) {
+      .cierre-col { grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; }
+      .cierre-der { text-align: right; }
+    }
+
+    .taller {
+      width: var(--lado);
+      margin: 0 auto;
+      padding: 0 0 calc(1.6rem + env(safe-area-inset-bottom));
+      color: var(--suave);
+    }
+    .taller summary {
+      cursor: pointer;
+      list-style: none;
+      text-align: center;
+      min-height: 44px;
+      display: grid;
+      align-items: center;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .1em;
+      font-size: .95rem;
+    }
+    .taller summary::-webkit-details-marker { display: none; }
+    .taller-cuerpo {
+      margin-top: .4rem;
+      padding: 1.1rem 0 0;
+      border-top: 1px solid var(--linea);
+      text-align: left;
+      font-size: 1.08rem;
+    }
+    .taller h2 {
+      margin: 0 0 .4rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: 0;
+      font-variant: normal;
+      font-weight: 500;
+      color: var(--tinta);
+      text-transform: none;
+    }
+    .elegir {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 1rem;
+      border: 1px solid var(--linea);
+      cursor: pointer;
+      font-variant: small-caps;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: var(--tinta);
+    }
+    .elegir input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    @media (max-width: 380px) { .opciones { grid-template-columns: 1fr; } }
+    @media (min-width: 900px) {
+      .portada.sin-fotos::before { inset: 1.6rem; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .slide.activa img { animation: ken 7.2s var(--ease) forwards; }
+      .portada.sin-fotos .kicker,
+      .portada.sin-fotos h1,
+      .portada.sin-fotos .cuando-corto {
+        animation: entrar .8s var(--ease) both;
+      }
+      .portada.sin-fotos h1 { animation-delay: .06s; }
+      .portada.sin-fotos .cuando-corto { animation-delay: .12s; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .slide { transition: none; }
+      .flecha:active, .pausa:active, .enviar:active, .opciones label:active, .paso button:active,
+      .acciones-lugar a:active, .acciones-lugar button:active, .abrir-maps:active { transform: none; }
+    }
+    @keyframes ken { from { transform: scale(1.045); } to { transform: scale(1); } }
+    @keyframes entrar {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="saltar" href="#datos">Saltar a los datos</a>
+
+  <header class="portada sin-fotos" id="portada" aria-roledescription="carrusel" aria-label="Portada de Ariela">
+    <div class="slides" id="slides"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <nav class="indice" aria-label="Índice">
+      <a class="indice-marca" href="#portada">Ariela</a>
+      <div class="indice-links">
+        <a href="#frase">La invitación</a>
+        <a href="#datos">Ubicación</a>
+        <a href="#regresiva">Cuenta regresiva</a>
+        <a href="#vestimenta">Dress code</a>
+        <a href="#confirmar">Confirmación</a>
+      </div>
+    </nav>
+    <div class="portada-copy">
+      <p class="kicker">Mis quince</p>
+      <h1>Ariela</h1>
+      <p class="cuando-corto">5 de diciembre · 21:00</p>
+    </div>
+    <a class="bajar" href="#frase">La invitación</a>
+    <div class="mando" id="mando" hidden>
+      <button class="flecha" type="button" id="anterior" aria-label="Foto anterior">‹</button>
+      <p id="contador">01  /  01</p>
+      <button class="pausa" type="button" id="pausa" aria-pressed="false">Pausa</button>
+      <button class="flecha" type="button" id="siguiente" aria-label="Foto siguiente">›</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="banda banda-frase">
+      <div class="col">
+        <blockquote class="frase" id="frase">
+          <p>Hay historias y personas que no voy a olvidar y recuerdos como este que siempre voy a guardar.</p>
+          <p>Son parte de mi vida y es mi deseo que compartan este día tan especial conmigo.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="banda banda-lugar" id="datos" aria-labelledby="t-datos">
+      <div class="col">
+        <p class="placa">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+            <path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/>
+          </svg>
+          Fiesta
+        </p>
+        <h2 class="lugar-nombre" id="t-datos">Salón “El Hornero”</h2>
+        <p class="lugar-hora">21:00 hs</p>
+        <p class="lugar-cuando">Sábado 5 de diciembre de 2026</p>
+        <p class="lugar-dir">Araoz 1949, Luján de Cuyo, Mendoza</p>
+        <div class="mapa">
+          <iframe title="Mapa de Salón El Hornero, Araoz 1949, Luján de Cuyo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?hl=es&amp;q=-33.005729,-68.846797+(Sal%C3%B3n%20El%20Hornero)&amp;z=18&amp;output=embed"></iframe>
+          <a class="abrir-maps" id="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Sal%C3%B3n%20El%20Hornero%2C%20Araoz%201949%2C%20Luj%C3%A1n%20de%20Cuyo%2C%20Mendoza" target="_blank" rel="noopener">
+            Abrir en Maps
+            <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 5h5v5"/><path d="M19 5l-9 9"/><path d="M19 13v6H5V5h6"/>
+            </svg>
+          </a>
+        </div>
+        <div class="acciones-lugar">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Sal%C3%B3n%20El%20Hornero%2C%20Araoz%201949%2C%20Luj%C3%A1n%20de%20Cuyo%2C%20Mendoza" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+              <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/>
+            </svg>
+            Ver en mapa
+          </a>
+          <button type="button" id="calendario">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+              <rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/>
+            </svg>
+            Agendar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="banda banda-cuenta" id="regresiva" aria-labelledby="t-cuenta">
+      <div class="col">
+      <h2 id="t-cuenta">Cuenta regresiva</h2>
+      <p class="aviso" id="sin-fecha" hidden>La fecha se confirma en los próximos días.</p>
+      <p class="sr" id="cuenta-texto"></p>
+      <div class="cuenta" id="cuenta" aria-hidden="true">
+        <p class="cuenta-dias"><b data-u="dias">00</b><span data-etiq="dias">días</span></p>
+        <div class="cuenta-resto">
+          <p><b data-u="horas">00</b><span data-etiq="horas">horas</span></p>
+          <p><b data-u="minutos">00</b><span data-etiq="minutos">minutos</span></p>
+          <p><b data-u="segundos">00</b><span data-etiq="segundos">segundos</span></p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="banda banda-vestir vestir" id="vestimenta" aria-labelledby="t-dress">
+      <div class="col">
+        <h2 id="t-dress">Dress code</h2>
+        <div class="vestir-bloque">
+          <div class="vestir-tarjeta">
+            <p class="vestir-etiq">Tipo de vestimenta</p>
+            <p class="vestir-titulo">Elegante formal</p>
+          </div>
+          <div class="vestir-tarjeta vestir-colores">
+            <p class="vestir-etiq">Colores</p>
+            <p class="vestir-titulo">Blanco y negro</p>
+          </div>
+          <div class="vestir-tarjeta">
+            <p class="vestir-etiq">Recomendaciones</p>
+            <p class="vestir-lead">Si tenés dudas, priorizá tonos neutros y estilo elegante.</p>
+            <p class="vestir-etiq vestir-sub">Buenas opciones</p>
+            <ul>
+              <li>Traje o conjunto formal</li>
+              <li>Vestido largo o midi elegante</li>
+              <li>Zapatos de vestir</li>
+            </ul>
+            <p class="vestir-etiq vestir-no">No llevar</p>
+            <ul>
+              <li>Jeans</li>
+              <li>Zapatillas deportivas</li>
+              <li>Remeras estampadas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="banda banda-confirma" id="confirmar" aria-labelledby="t-rsvp">
+      <div class="col">
+      <h2 id="t-rsvp">Confirmación</h2>
+      <form id="rsvp">
+        <label class="campo">
+          <span>Tu nombre</span>
+          <input name="nombre" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required maxlength="80" aria-errormessage="err-nombre">
+          <small class="error" id="err-nombre">Escribí tu nombre para confirmar.</small>
+        </label>
+        <fieldset>
+          <legend>¿Venís?</legend>
+          <div class="opciones">
+            <label>Sí, ahí voy<input type="radio" name="viene" value="si" required></label>
+            <label>Esta vez no puedo<input type="radio" name="viene" value="no"></label>
+          </div>
+          <small class="error" id="err-viene">Elegí si venís.</small>
+        </fieldset>
+        <div class="campo" id="campo-acompanantes">
+          <span id="etiq-acomp">Acompañantes, además de vos</span>
+          <div class="paso">
+            <button type="button" id="menos" aria-label="Un acompañante menos">−</button>
+            <input name="acompanantes" type="number" inputmode="numeric" min="0" max="10" value="0" aria-labelledby="etiq-acomp">
+            <button type="button" id="mas" aria-label="Un acompañante más">+</button>
+          </div>
+        </div>
+        <label class="campo">
+          <span>Un mensaje para Ariela</span>
+          <textarea name="mensaje" rows="3" maxlength="400" enterkeyhint="send"></textarea>
+        </label>
+        <button class="enviar" id="envio" type="submit">Confirmar por WhatsApp</button>
+        <p id="rsvp-estado" role="status"></p>
+        <details id="respaldo" hidden>
+          <summary>Ver el mensaje</summary>
+          <p id="mensaje-listo"></p>
+        </details>
+      </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cierre">
+    <div class="cierre-col">
+      <div>
+        <p class="firma">Ariela</p>
+        <p class="gracias">¡Gracias por ser parte de este día!</p>
+      </div>
+      <div class="cierre-der">
+        <p class="cierre-fecha"><span>Sábado 5 de diciembre de 2026</span><span>Los 15 de Ariela</span></p>
+        <p>Diseñado con amor.</p>
+      </div>
+    </div>
+  </footer>
+
+  <details class="taller" id="taller" hidden>
+    <summary>Notas de armado</summary>
+    <div class="taller-cuerpo">
+      <h2>Mientras la terminamos</h2>
+      <p id="faltan"></p>
+      <ul>
+        <li>Las fotos entran después de la sesión. Hasta entonces la portada queda con el nombre.</li>
+        <li>Dress code: blanco y negro, elegante formal.</li>
+        <li>Las confirmaciones llegan al 261 466-4183.</li>
+      </ul>
+      <label class="elegir">Elegí las fotos
+        <input id="elegir-fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+      </label>
+      <p>También podés dejarlas en la carpeta fotos, como 01.jpg, 02.jpg, 03.jpg. O soltarlas sobre la portada.</p>
+    </div>
+  </details>
+
+  <script>
+    const FIESTA = {
+      borrador: true,
+      fechaISO: "2026-12-05T21:00:00-03:00",
+      whatsapp: "5492614664183",
+      fotos: []
+    };
+
+    const portada = document.querySelector("#portada");
+    const form = document.querySelector("#rsvp");
+    const etiquetas = {
+      dias: ["día", "días"],
+      horas: ["hora", "horas"],
+      minutos: ["minuto", "minutos"],
+      segundos: ["segundo", "segundos"]
+    };
+    let slides = [];
+    let index = 0;
+    let timer = 0;
+    let pausado = false;
+    let portadaVisible = true;
+    let urlsLocales = [];
+    let ultimoAnuncio = "";
+
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function palabra(valor, par) { return valor === 1 ? par[0] : par[1]; }
+
+    function existe(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = src;
+      });
+    }
+
+    async function descubrirFotos() {
+      const lista = FIESTA.fotos.length
+        ? FIESTA.fotos
+        : Array.from({ length: 12 }, (_, i) => "fotos/" + pad(i + 1) + ".jpg");
+      const ok = await Promise.all(lista.map(existe));
+      return lista.filter((_, i) => ok[i]);
+    }
+
+    function arrancar() {
+      clearInterval(timer);
+      timer = 0;
+      const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (pausado || quieto || slides.length < 2 || !portadaVisible || document.hidden) return;
+      timer = window.setInterval(() => ir(index + 1, false), 5200);
+    }
+
+    function ir(n, usuario) {
+      if (!slides.length) return;
+      index = (n + slides.length) % slides.length;
+      slides.forEach((fig, i) => {
+        const on = i === index;
+        fig.classList.toggle("activa", on);
+        fig.toggleAttribute("aria-hidden", !on);
+      });
+      document.querySelector("#contador").textContent = pad(index + 1) + "  /  " + pad(slides.length);
+      if (usuario) arrancar();
+    }
+
+    function armarDiapositivas(srcs) {
+      const root = document.querySelector("#slides");
+      root.replaceChildren();
+      portada.classList.toggle("con-fotos", srcs.length > 0);
+      portada.classList.toggle("sin-fotos", srcs.length === 0);
+      if (!srcs.length) {
+        slides = [];
+        document.querySelector("#mando").hidden = true;
+        clearInterval(timer);
+        return;
+      }
+      slides = srcs.map((src, i) => {
+        const fig = document.createElement("figure");
+        fig.className = "slide" + (i === 0 ? " activa" : "");
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Foto de Ariela";
+        img.decoding = "async";
+        if (i === 0) img.fetchPriority = "high";
+        fig.append(img);
+        root.append(fig);
+        return fig;
+      });
+      document.querySelector("#mando").hidden = srcs.length < 2;
+      ir(0, false);
+      arrancar();
+    }
+
+    function usarArchivos(lista) {
+      const archivos = [...lista].filter((archivo) => archivo.type.startsWith("image/"));
+      if (!archivos.length) return;
+      urlsLocales.forEach((url) => URL.revokeObjectURL(url));
+      urlsLocales = archivos.map((archivo) => URL.createObjectURL(archivo));
+      armarDiapositivas(urlsLocales);
+      actualizarTaller(true);
+    }
+
+    function actualizarTaller(hayFotos) {
+      if (!FIESTA.borrador) return;
+      document.querySelector("#taller").hidden = false;
+      const faltan = [];
+      if (!hayFotos) faltan.push("las fotos de la sesión");
+      else if (urlsLocales.length) faltan.push("guardar las fotos en la carpeta fotos");
+      if (!FIESTA.whatsapp) faltan.push("el WhatsApp");
+      document.querySelector("#faltan").textContent = faltan.length
+        ? "Para terminarla faltan: " + faltan.join(" y ") + "."
+        : "Ya están los datos principales. Revisala en el celular antes de publicarla.";
+    }
+
+    function tick() {
+      const fecha = new Date(FIESTA.fechaISO);
+      const caja = document.querySelector("#cuenta");
+      const aviso = document.querySelector("#sin-fecha");
+      const texto = document.querySelector("#cuenta-texto");
+      if (Number.isNaN(fecha.getTime())) {
+        caja.hidden = true;
+        aviso.hidden = false;
+        return;
+      }
+      const diff = fecha.getTime() - Date.now();
+      if (diff <= 0) {
+        aviso.hidden = false;
+        aviso.textContent = diff > -6 * 3600000 ? "Hoy es el día." : "Gracias por acompañar a Ariela.";
+        caja.hidden = true;
+        texto.textContent = aviso.textContent;
+        return;
+      }
+      aviso.hidden = true;
+      caja.hidden = false;
+      const partes = {
+        dias: Math.floor(diff / 86400000),
+        horas: Math.floor(diff / 3600000) % 24,
+        minutos: Math.floor(diff / 60000) % 60,
+        segundos: Math.floor(diff / 1000) % 60
+      };
+      Object.entries(partes).forEach(([clave, valor]) => {
+        document.querySelector('[data-u="' + clave + '"]').textContent = pad(valor);
+        document.querySelector('[data-etiq="' + clave + '"]').textContent = palabra(valor, etiquetas[clave]);
+      });
+      const anuncio = (partes.dias === 0 && partes.horas === 0 && partes.minutos === 1 ? "Falta " : "Faltan ")
+        + partes.dias + " " + palabra(partes.dias, etiquetas.dias) + ", "
+        + partes.horas + " " + palabra(partes.horas, etiquetas.horas) + " y "
+        + partes.minutos + " " + palabra(partes.minutos, etiquetas.minutos) + ".";
+      if (anuncio !== ultimoAnuncio) {
+        ultimoAnuncio = anuncio;
+        texto.textContent = anuncio;
+      }
+    }
+
+    function ajustarAcompanantes(delta) {
+      const campo = form.acompanantes;
+      const proximo = Math.min(10, Math.max(0, Number(campo.value || 0) + delta));
+      campo.value = String(proximo);
+    }
+
+    form.nombre.addEventListener("input", () => form.nombre.setCustomValidity(""));
+    form.addEventListener("change", () => {
+      const noVa = form.viene.value === "no";
+      form.acompanantes.disabled = noVa;
+      document.querySelector("#menos").disabled = noVa;
+      document.querySelector("#mas").disabled = noVa;
+      document.querySelector("#campo-acompanantes").hidden = noVa;
+      document.querySelector("#envio").textContent = noVa ? "Avisar que no puedo" : "Confirmar por WhatsApp";
+    });
+    document.querySelector("#menos").addEventListener("click", () => ajustarAcompanantes(-1));
+    document.querySelector("#mas").addEventListener("click", () => ajustarAcompanantes(1));
+
+    form.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+      const nombre = form.nombre.value.trim();
+      if (!nombre) {
+        form.nombre.setCustomValidity("Escribí tu nombre para confirmar.");
+        form.nombre.reportValidity();
+        return;
+      }
+      form.nombre.setCustomValidity("");
+      const lineas = ["Hola, soy " + nombre + "."];
+      if (form.viene.value === "si") {
+        lineas.push("Confirmo que voy a los 15 de Ariela.");
+        const extra = Number(form.acompanantes.value || 0);
+        if (extra > 0) lineas.push("Acompañantes, además de mí: " + extra + ".");
+      } else {
+        lineas.push("No voy a poder ir a los 15 de Ariela.");
+      }
+      if (form.mensaje.value.trim()) lineas.push(form.mensaje.value.trim());
+      const texto = lineas.join("\n");
+      document.querySelector("#mensaje-listo").textContent = texto;
+      document.querySelector("#respaldo").hidden = false;
+      const numero = String(FIESTA.whatsapp || "").replace(/\D/g, "");
+      const estado = document.querySelector("#rsvp-estado");
+      if (!numero) {
+        estado.textContent = "El WhatsApp de confirmación todavía no está cargado. El mensaje quedó escrito acá abajo.";
+        return;
+      }
+      const enlace = "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
+      const abierta = window.open(enlace, "_blank", "noopener");
+      if (!abierta) location.href = enlace;
+      estado.textContent = "Se abrió WhatsApp con tu confirmación.";
+    });
+
+    document.querySelector("#anterior").addEventListener("click", () => ir(index - 1, true));
+    document.querySelector("#siguiente").addEventListener("click", () => ir(index + 1, true));
+    document.querySelector("#pausa").addEventListener("click", () => {
+      pausado = !pausado;
+      const boton = document.querySelector("#pausa");
+      boton.setAttribute("aria-pressed", String(pausado));
+      boton.textContent = pausado ? "Seguir" : "Pausa";
+      if (pausado) clearInterval(timer);
+      else arrancar();
+    });
+    document.querySelector("#calendario").addEventListener("click", () => {
+      const inicio = new Date(FIESTA.fechaISO);
+      const fin = new Date(inicio.getTime() + 5 * 3600000);
+      const marca = (fecha) => fecha.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+      const cuerpo = [
+        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Ariela//XV//ES", "BEGIN:VEVENT",
+        "DTSTART:" + marca(inicio), "DTEND:" + marca(fin),
+        "SUMMARY:Los 15 de Ariela",
+        "LOCATION:Salón El Hornero, Araoz 1949, Luján de Cuyo",
+        "END:VEVENT", "END:VCALENDAR"
+      ].join("\r\n");
+      const enlace = document.createElement("a");
+      enlace.href = URL.createObjectURL(new Blob([cuerpo], { type: "text/calendar" }));
+      enlace.download = "los-15-de-ariela.ics";
+      enlace.click();
+      setTimeout(() => URL.revokeObjectURL(enlace.href), 2000);
+    });
+    document.querySelector("#elegir-fotos").addEventListener("change", (evento) => usarArchivos(evento.target.files));
+    portada.addEventListener("dragover", (evento) => { if (FIESTA.borrador) evento.preventDefault(); });
+    portada.addEventListener("drop", (evento) => {
+      if (!FIESTA.borrador) return;
+      evento.preventDefault();
+      usarArchivos(evento.dataTransfer.files);
+    });
+
+    let gesto = null;
+    portada.addEventListener("pointerdown", (evento) => {
+      if (evento.target.closest("button, a, input, label")) return;
+      gesto = { x: evento.clientX, y: evento.clientY };
+    });
+    portada.addEventListener("pointerup", (evento) => {
+      if (!gesto) return;
+      const dx = evento.clientX - gesto.x;
+      const dy = evento.clientY - gesto.y;
+      gesto = null;
+      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+      ir(index + (dx < 0 ? 1 : -1), true);
+    });
+    document.addEventListener("keydown", (evento) => {
+      if (evento.target.closest("input, textarea")) return;
+      if (evento.key === "ArrowRight") ir(index + 1, true);
+      if (evento.key === "ArrowLeft") ir(index - 1, true);
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) clearInterval(timer);
+      else arrancar();
+    });
+    new IntersectionObserver(([entrada]) => {
+      portadaVisible = entrada.isIntersecting;
+      if (!portadaVisible) clearInterval(timer);
+      else arrancar();
+    }, { threshold: 0.35 }).observe(portada);
+
+    tick();
+    setInterval(tick, 1000);
+    descubrirFotos().then((encontradas) => {
+      armarDiapositivas(encontradas);
+      actualizarTaller(encontradas.length > 0);
+    });
+  </script>
+</body>
+</html>
